@@ -1,8 +1,8 @@
 <div ng-controller="UserCtrl">
   <a href="#" ng-click="fbLogout()">FB Logout</a>
-  <div ng-show="user">
-  <p>Hello, {{ user.displayName }}</p> 
-
+  <div>
+  <p>Hello, {{ userName }}</p> 
+  <img id="userphoto" src="{{ userPhoto }}" style="width:40px;height:40px">
   </div>  
   <!-- VideoSync -->
   <h1>Video Section</h1>

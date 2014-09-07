@@ -39,7 +39,7 @@ app.controller('UserCtrl',
 		$scope.fbLogin = function() {
 			auth.login('facebook', {
 			  rememberMe: true,
-			  scope: 'email,user_likes'
+			  scope: 'email'
 			});
 		};
 		// Logout via Facebook
@@ -58,19 +58,20 @@ app.controller('UserCtrl',
 		  } else if (user) {
 		    // user authenticated with Firebase
 		    console.log("User ID: " + user.uid + ", Provider: " + user.provider);
-		    console.log(user.displayName);
-
-		    // send logged in User to the Main Room
-		   	
+		    console.log(user);
+		    $scope.userPhoto = user.thirdPartyUserData.picture.data.url;
+		    $scope.userName = user.thirdPartyUserData.first_name;
+		    document.getElementById('userphoto').href = user.thirdPartyUserData.picture.data.url;
+		    // send logged in User to the Main Room	
         $location.path('/room').replace();
         $scope.$apply();
 		  } else {
-		    // user is logged out
-		    console.log('not logged in');
+		    // user is logged out - display status
+		    console.log('user not currently logged in');
 		  }
 		});
 
-
+		// 
 
 
 	}]);
