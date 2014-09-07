@@ -1,0 +1,125 @@
+<div ng-controller="UserCtrl">
+  <a href="#" ng-click="fbLogout()">FB Logout</a>
+  <div ng-show="user">
+  <p>Hello, {{ user.displayName }}</p> 
+
+  </div>  
+  <!-- VideoSync -->
+  <h1>Video Section</h1>
+
+  <!-- YT PLAYER -->
+
+  <div id="player"></div>
+  
+  <h1>Code Editor</h1>
+  <!-- Firepad -->
+  <div id="firepad" style= "height:300px;"></div>
+
+  <!-- Messaging -->
+  <h1>Chat Section</h1>
+   <!-- Another shot at chat  -->
+   <div class="container">
+
+        <div class="panel panel-default">
+ 
+            <div class="panel-body">
+                <div id="comments-container"></div>
+            </div>
+ 
+            <div class="panel-footer">
+ 
+                <form role="form">
+                    <div class="form-group">
+                        <label for="comments">Enter your message here:</label>
+                        <input id="nameInput" placeholder="name">
+                        <input class="form-control" id="messageInput" placeholder="message" name="comments">
+                    </div>
+ 
+                    <button type="submit" id="submit-btn" class="btn">Send</button>
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+  
+  <!-- Likes and Dislikes -->
+  <h1>Voting Section</h1>
+  <!-- Likes section -->
+  <div id="liking-section">Likes:
+  	<div id="likes"></div>
+  	<button id="btn">Like</button>
+    <!-- uncomment below for a reset button in the view -->
+  	<button id="reset">Reset Likes</button>
+  </div>	  
+  <!-- Dislikes Section -->
+  <div id="disliking-section">Dislikes:
+    <div id="dislikes"></div>
+    <button id="dislike-btn">Dislike</button>
+    <!-- uncomment below for a reset button in the view -->
+    <button id="dislike-reset">Reset Disikes</button>
+  </div>    
+</div>
+
+<!-- YouTube VideoSync Javascript -->
+<script>
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var playerVars = {
+  modestbranding: 1,
+  theme: 'light',
+  showinfo: 0,
+  rel: 0,
+  fs: 0,  
+};
+
+var vidSync = new VideoSync('videotest');
+
+function onYouTubeIframeAPIReady() {
+
+  player = new YT.Player('player', {
+    height: '200',
+    width: '200',
+    videoId: 'z7podKZaNyE',
+    playerVars: playerVars,
+    events: {
+      'onReady': vidSync.onPlayerReady,
+      'onStateChange': vidSync.onPlayerStateChange
+    }
+  }); 
+};
+</script>
+<!-- FirePad Javascript -->
+<script>
+function init() {
+      //// Initialize Firebase.
+      var padRef = new Firebase('https://educationalapp.firebaseio.com/editor')
+      //// Create CodeMirror (with line numbers and the JavaScript mode).
+      var codeMirror = CodeMirror(document.getElementById('firepad'), {
+        lineNumbers: true,
+        mode: 'javascript'
+      });
+      //// Create Firepad.
+      var firepad = Firepad.fromCodeMirror(padRef, codeMirror, {
+        
+      });
+    }
+    // Helper to get hash from end of URL or generate a random one.
+    function getExampleRef() {
+      var padRef = new Firebase('https://educationalapp.firebaseio.com/editor');
+      var hash = window.location.hash.replace(/#/g, '');
+      if (hash) {
+        padRef = padRef.child(hash);
+      } else {
+        padRef = padRef.push(); // generate unique location.
+        window.location = window.location + '#' + padRef.name(); // add it as a hash to the URL.
+      }
+      if (typeof console !== 'undefined')
+        console.log('Firebase data: ', padRef.toString());
+      return padRef;
+    }
+
+    init();
+</script>

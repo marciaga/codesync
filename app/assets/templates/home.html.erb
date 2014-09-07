@@ -1,0 +1,59 @@
+<!-- Login Stuff -->
+<a href="#" ng-click="fbLogin()">FB Login</a>
+<a href="#" ng-click="fbLogout()">FB Logout</a>
+<div ng-show="auth.user">
+	<p>Hello, {{ auth.user.displayName }}</p>	
+
+</div>
+<!-- Home Template -->
+<div class="row">
+	<h1>The Home Page</h1>
+	<div>
+		<div class="small-7 columns">
+			<ul>
+				<li ng-repeat="u in users">
+					Name: {{ u.name }}<br/>
+					
+					<a ng-click="user.destroy(u)" class="tiny button round alert">X</a> 
+				</li>
+			</ul>
+		</div>
+		<form class="medium-5 columns" ng-submit="user.add()">
+		  <div class="row">
+		    <div class="large-12 columns">
+		      <div class="row collapse prefix-radius">
+		        <div class="medium-9 columns">
+		          <input type="text" placeholder="Name" ng-model="newUser.name">
+		          <input type="text" placeholder="Email" ng-model="newUser.email">
+		        </div>
+		      </div>
+		      <input type="submit" class="button radius expand"/>
+		    </div>
+		    <!-- <div class="large-12 columns">
+		      <div class="row collapse prefix-radius">
+		        <div class="small-3 columns">
+		          <span class="prefix">@IG Account</span>
+		        </div>
+		        <div class="small-9 columns">
+		          <input type="text" placeholder="Value" ng-model="newAccount.ig_account">
+		        </div>
+		      </div>
+		    </div> -->
+	<!-- 	    <div class="large-12 columns">
+		      <div class="row collapse prefix-radius">
+		        <div class="small-3 columns">
+		          <span class="prefix">Engagement</span>
+		        </div>
+		        <div class="small-9 columns">
+		          <input type="text" placeholder="Value" ng-model="newAccount.engagment">
+		        </div>
+		      </div>
+		      
+		    </div> -->
+		  </div>
+			</form>
+	</div>
+</div>
+
+
+
