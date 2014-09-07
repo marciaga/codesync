@@ -57,9 +57,6 @@ angular.module('AngularRails')
         });
 
 
-        function Hello($scope, $http) {
-            $http.get
-        }
 
     });
 
