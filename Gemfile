@@ -25,6 +25,10 @@ gem 'spring',        group: :development
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'active_model_serializers' #customize what kind of JSON
+# Enables static asset serving and logging on
+gem 'rails_12factor', group: :production
+#Unicorn Web Server
+gem 'unicorn'
 # debugging tools
 group :development do
   gem 'meta_request'
@@ -40,6 +44,7 @@ group :development, :test do
   gem "jasmine", github: "pivotal/jasmine-gem"
 end
  
+ruby "2.1.2" 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
