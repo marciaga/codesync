@@ -23,11 +23,11 @@ Rails.application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
-
+  config.assets.compress = false
   # commented out because I thought it was making Angular Angry
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
   # instead I used this other thing
-  config.assets.js_compressor = Uglifier.new(:beautify => true)
+  # config.assets.js_compressor = Uglifier.new(:beautify => true)
 
   # config.assets.css_compressor = :sass
 
