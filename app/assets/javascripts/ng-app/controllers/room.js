@@ -1,7 +1,6 @@
 //this is the controller for the Main App page
 angular.module('AngularRails')
     .controller('RoomCtrl', function ($scope, $http, $firebase) {
-       
         // voting starts here 
         // establish a new array in Firebase
         var upvoteRef = new Firebase('https://educationalapp.firebaseio.com/likes');
@@ -19,7 +18,6 @@ angular.module('AngularRails')
         $('#reset').click(function() {
             upvoteRef.set(0);
         });
-
          // establish a new array in Firebase
         var downvoteRef = new Firebase('https://educationalapp.firebaseio.com/dislikes');
         // initialize dislikes
@@ -36,7 +34,6 @@ angular.module('AngularRails')
         $('#dislike-reset').click(function() {
             downvoteRef.set(0);
         });
-
        /// scrolling chat
        var fireBaseRef = new Firebase("https://educationalapp.firebaseio.com/messages");
         $('#messageInput').keypress(function (e) {
@@ -47,7 +44,6 @@ angular.module('AngularRails')
               $('#messageInput').val('');
             }
         });
-        
         //scrolling part
         fireBaseRef.on('child_added', function(snapshot) {
             var commentsContainer = $('#comments-container');
@@ -55,14 +51,4 @@ angular.module('AngularRails')
             $('<div/>').text(message.text).prepend($('<em/>').text(message.name+': ')).appendTo($('#comments-container'));
             commentsContainer.scrollTop(commentsContainer.prop('scrollHeight'));
         });
-
-
-
     });
-
-
-
-
-
-
-

@@ -1,74 +1,108 @@
+<!-- This div with the ng-controller has to wrap the page -->
 <div ng-controller="UserCtrl">
-  <a href="#" ng-click="fbLogout()">FB Logout</a>
-  <!-- Form to submit new users using JSON from Facebook -->
-  <div>
-
-  <p>Hello, {{ userName }}</p> 
-  <img id="userphoto" src="{{ userPhoto }}" style="width:40px;height:40px">
-  </div>  
-  <!-- VideoSync -->
-  <h1>Video Section</h1>
-
-  <!-- YT PLAYER -->
-
-  <div id="player"></div>
+  <div class="row">
+    <div class="small-8 columns">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h3 class="header-control">Code Sync</h3>
+          </li> 
+        </ul>
+      </nav>
+    </div><!-- close small-8 -->
+    <div class="small-4 columns">
+      <section class="top-bar-section">
+        <div class="icon-bar three-up right">
+          <a class="item">
+            <!-- Display User's photo -->
+            <img id="userphoto" src="{{ userPhoto }}" style="width:40px;height:40px"/>
+            <!-- Display the Logged-in user's name -->
+            <!-- Angular Expression must be wrapped -->
+            <label><p>{{ userName }}</p></label>
+          </a>
+          <a class="item right-off-canvas-toggle">
+            <img src="/assets/chat.svg" alt="chat"/>
+            <label>Chat</label>
+          </a>
+          <a class="item" href="#" ng-click="fbLogout()">
+            <img src="/assets/logout.svg"/>
+            <label>Logout</label>
+          </a>
+        </div><!-- close icon-bar -->
+      </section>
+    </div><!-- close small-4 columns -->
+  </div><!-- close row -->
   
-  <h1>Code Editor</h1>
-  <!-- Firepad -->
-  <div id="firepad" style= "height:300px;"></div>
-
-  <!-- Messaging -->
-  <h1>Chat Section</h1>
-   <!-- Another shot at chat  -->
-   <div class="container">
-
-        <div class="panel panel-default">
- 
+  <!-- Messaging starts here-->
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      <aside class="right-off-canvas-menu">
+        <div class="container">
+          <div class="panel panel-default">
             <div class="panel-body">
-                <div id="comments-container"></div>
-            </div>
- 
-            <div class="panel-footer">
- 
-                <form role="form">
-                    <div class="form-group">
-                        <label for="comments">Enter your message here:</label>
-                        <input id="nameInput" placeholder="name">
-                        <input class="form-control" id="messageInput" placeholder="message" name="comments">
-                    </div>
- 
-                    <button type="submit" id="submit-btn" class="btn">Send</button>
-                </form>
- 
-            </div>
-        </div>
-    </div>
-  
-  <!-- Likes and Dislikes -->
-  <h1>Voting Section</h1>
-  <!-- Likes section -->
-  <div id="liking-section">Likes:
-  	<div id="likes"></div>
-  	<button id="btn">Like</button>
-    <!-- uncomment below for a reset button in the view -->
-  	<button id="reset">Reset Likes</button>
-  </div>	  
-  <!-- Dislikes Section -->
-  <div id="disliking-section">Dislikes:
-    <div id="dislikes"></div>
-    <button id="dislike-btn">Dislike</button>
-    <!-- uncomment below for a reset button in the view -->
-    <button id="dislike-reset">Reset Disikes</button>
-  </div>    
-</div>
+                <div id="comments-container"></div><!--close comments-container-->
+            </div><!-- close panel-body-->
+              <div class="panel-footer">
+                  <form role="form">
+                      <div class="form-group">
+                          <label for="comments">Enter your message here:</label>
+                          <input id="nameInput" type="hidden" value="{{ userName }}">
+                          <input class="form-control" id="messageInput" placeholder="message" name="comments">
+                      </div><!-- close form-group-->
+                      <button type="submit" id="submit-btn" class="button [tiny small large]">Send</button>
+                  </form>
+              </div><!-- close panel-footer-->
+          </div><!-- close panel panel-default -->
+        </div><!-- close container -->
+      </aside>
+      <div class="row">
+        <div class="large-6 medium-8 columns">
+          <!-- VideoSync -->
+          <h2 class="header-control">Watch</h2>
+          <!-- YT PLAYER -->
+          <div id="player"></div>
+        </div><!-- close column-->
+        <div class="large-6 medium-4 columns">  
+          <h2 class="header-control">Code</h2>
+          <!-- Firepad -->
+          <div id="firepad" style= "height:300px;"></div>
+        </div><!-- close column -->
+      </div><!-- end row with video + code editor -->
+      <!-- THIS CLOSES THE OFF-CANVAS CHAT WINDOW -->
+      <a class="exit-off-canvas"></a>
+    </div> <!-- close inner-wrap div for chat window -->
+  </div> <!-- close off-canvas wrap for chat window-->
 
+  <div class="row">
+    <div class="small-4 small-centered columns">
+      <a href="#" data-reveal-id="voteModal" class="button">I&rsquo;m done! What now?</a>
+    </div>
+  </div>
+  <div id="voteModal" class="reveal-modal large" data-reveal>
+    <!-- Likes and Dislikes -->
+    <!-- Likes section -->
+    <div id="liking-section"><h3>Well, what did you think?</h3>
+      <div id="likes"></div>
+      <button id="btn">I totally got it.</button>
+      <!-- uncomment below for a reset button in the view -->
+      <!--   <button id="reset">Reset Likes</button> -->
+    </div><!-- close liking-section -->   
+    <!-- Dislikes Section -->
+    <div id="disliking-section">
+      <div id="dislikes"></div>
+      <button id="dislike-btn">I&rsquo;m still a little confused.</button>
+    <!-- uncomment below for a reset button in the view -->
+    <!--    <button id="dislike-reset">Reset Disikes</button> -->
+    </div><!-- closes disliking section-->
+  </div><!-- closes voteModal section -->
+</div><!-- This is the closing Div for the Angular controller -->
 <!-- YouTube VideoSync Javascript -->
 <script>
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+// init YT player vars
 var playerVars = {
   modestbranding: 1,
   theme: 'light',
@@ -76,15 +110,14 @@ var playerVars = {
   rel: 0,
   fs: 0,  
 };
-
+// create new instance of videoSync
 var vidSync = new VideoSync('videotest');
-
+// on page load, ready the YT player
 function onYouTubeIframeAPIReady() {
-
   player = new YT.Player('player', {
-    height: '200',
-    width: '200',
-    videoId: 'z7podKZaNyE',
+    height: '300',
+    width: '450',
+    videoId: 'QETUuZ27N0w',
     playerVars: playerVars,
     events: {
       'onReady': vidSync.onPlayerReady,
@@ -105,7 +138,6 @@ function init() {
       });
       //// Create Firepad.
       var firepad = Firepad.fromCodeMirror(padRef, codeMirror, {
-        
       });
     }
     // Helper to get hash from end of URL or generate a random one.
@@ -122,6 +154,5 @@ function init() {
         console.log('Firebase data: ', padRef.toString());
       return padRef;
     }
-
     init();
 </script>

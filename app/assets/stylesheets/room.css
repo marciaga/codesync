@@ -25,3 +25,15 @@
         .comment-container:last-of-type {
             border-bottom: none;
         }
+        
+        .header-control {
+            font-weight: lighter;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            padding-left: 10px;
+        }
+
+        .light {
+            font-weight: lighter;
+        }

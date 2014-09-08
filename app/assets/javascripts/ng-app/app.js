@@ -5,19 +5,16 @@ var app = angular
         'templates',
         'ngResource',
         'firebase'  
-
     ]).config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
               templateUrl: 'home.html',
               controller: 'UserCtrl as user'
-
           	}).
             when('/room', {
             	templateUrl: 'room.html',
             	controller: 'RoomCtrl'
-            });  
-             
+            });      
         $locationProvider.html5Mode(true);
     }). 
 config(
