@@ -27,7 +27,7 @@ Rails.application.configure do
   # commented out because I thought it was making Angular Angry
   # config.assets.js_compressor = :uglifier
   # instead I used this other thing
-  config.assets.js_compressor = Uglifier.new(:mangle => false)
+  # config.assets.js_compressor = Uglifier.new(:mangle => false)
 
   # config.assets.css_compressor = :sass
 
