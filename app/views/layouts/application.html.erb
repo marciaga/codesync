@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="AngularRails" lang="en">
   <head>
     <base href="/"></base>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "CodeSync" %></title>
     <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    
+    
     <%= csrf_meta_tags %>
     <script src="http://cdn.pubnub.com/pubnub.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.3.0/codemirror.css" />
-
     <!-- Firepad -->
     <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.0.0/firepad.css" />
+    
   </head>
-
-  <body ng-app="AngularRails">
-
+  <body >
     <%= yield %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

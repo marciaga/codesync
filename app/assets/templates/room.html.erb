@@ -1,3 +1,7 @@
+<script type="text/javascript">
+ 
+
+  </script>
 <!-- This div with the ng-controller has to wrap the page -->
 <div ng-controller="UserCtrl">
   <div class="row">
@@ -96,34 +100,39 @@
   </div><!-- closes voteModal section -->
 </div><!-- This is the closing Div for the Angular controller -->
 <!-- YouTube VideoSync Javascript -->
-<script>
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-// init YT player vars
-var playerVars = {
-  modestbranding: 1,
-  theme: 'light',
-  showinfo: 0,
-  rel: 0,
-  fs: 0,  
-};
-// create new instance of videoSync
-var vidSync = new VideoSync('videotest');
-// on page load, ready the YT player
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '300',
-    width: '450',
-    videoId: 'QETUuZ27N0w',
-    playerVars: playerVars,
-    events: {
-      'onReady': vidSync.onPlayerReady,
-      'onStateChange': vidSync.onPlayerStateChange
-    }
-  }); 
-};
+
+
+<script type="text/javascript">
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  // init YT player vars
+  var playerVars = {
+    modestbranding: 1,
+    theme: 'light',
+    showinfo: 0,
+    rel: 0,
+    fs: 0,  
+  };
+  // create new instance of videoSync
+  var vidSync = new VideoSync('videotest');
+  // on page load, ready the YT player
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '300',
+      width: '450',
+      videoId: 'QETUuZ27N0w',
+      playerVars: playerVars,
+      events: {
+        'onReady': vidSync.onPlayerReady,
+        'onStateChange': vidSync.onPlayerStateChange
+      }
+    }); 
+  };
+</script>
+<script type="text/javascript">
+  $(function(){ $(document).foundation();});
 </script>
 <!-- FirePad Javascript -->
 <script>

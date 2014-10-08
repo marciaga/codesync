@@ -8,14 +8,12 @@ app.controller('UserCtrl',
 		var auth = new FirebaseSimpleLogin(ref, function(error, user) {
 		  if (error) {
 		    // an error occurred while attempting login
-		    console.log(error);
 		  // user is now authenticated with Firebase
 		  } else if (user) {
 		  		$scope.userName = user.displayName;
 		  		$scope.userPhoto = user.thirdPartyUserData.picture.data.url;
 		  		// When User is authenticated, go directly to the Main page
 			  	$location.path('/room').replace();
-			  	console.log('user is logged in');
 	      	$scope.$apply();
 	      	// If the User is new, store some basic info in firebase
 		  		if (isNewUser) {
@@ -28,7 +26,6 @@ app.controller('UserCtrl',
 		  		}
 		  } else {
 		    // user is logged out - display status
-		    console.log('user not currently logged in');
 		    // If User is not logged in, tell em to buzz off!
 		    $location.path('/').replace();
 	      $scope.$apply();
@@ -40,14 +37,12 @@ app.controller('UserCtrl',
 			  rememberMe: true,
 			  scope: 'email, user_likes'
 			});
-			console.log('login pressed');
 		};		
 		// This is the Logout function
 		$scope.fbLogout = function() {
 			auth.logout();
 			// When a User logs out, send them to the root
 			$location.path('/');
-			console.log('logged out');
 		};
 		// Implement this at some future point
 	  // These are required for sending JSON through Rails

@@ -3,8 +3,6 @@
 // 
 // You can check out the demo right [here](http://larrywu.com/videosync/), or
 // view the source on [Github](https://github.com/lw7360/videosync/)
-
-
 // Setup
 // ---
 // roomId is the name of the channel you want to use.
@@ -14,8 +12,6 @@ function VideoSync(videotest, userId) {
     // If no userId is provided, generate a simple random one with Math.random.
     if (userId === undefined) {
         userId = Math.random().toString();
-        console.log(userId);
-
     };
 
     // A variable that will be set to the YouTube player object.

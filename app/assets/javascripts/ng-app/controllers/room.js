@@ -1,4 +1,4 @@
-//this is the controller for the Main App page
+  //this is the controller for the Main App page
 angular.module('AngularRails')
     .controller('RoomCtrl', function ($scope, $http, $firebase) {
         // voting starts here 
@@ -52,3 +52,4 @@ angular.module('AngularRails')
             commentsContainer.scrollTop(commentsContainer.prop('scrollHeight'));
         });
     });
+
